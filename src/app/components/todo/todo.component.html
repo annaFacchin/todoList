@@ -1,0 +1,14 @@
+<style>
+    .canceled {
+        text-decoration: line-through;
+    }
+</style>
+
+<div [id]="todoId">
+    <div class="form-check form-check-inline">
+        <input class="toggle" type="checkbox" (click)="toggleText()">
+        <span> {{ todoId }} : </span>
+        <span [ngClass]="{'': toggle, 'canceled': !toggle}" class=""> {{ todo }} </span> &nbsp; 
+        <button (click)="remove()"> X </button>
+    </div>
+</div>

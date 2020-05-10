@@ -1,0 +1,13 @@
+<div>
+    <input #field placeholder="add new and press enter" autofocus="" (keyup.enter)="addTodo(field.value)">
+</div>
+
+<div *ngFor="let t of todoList">
+    <br>
+    <app-todo 
+    [todo]="t.initialValue" 
+    [todoId]="t.todoId" 
+    (onRemoveEvent)="onRemove($event)"
+    >
+</app-todo>  
+</div>
