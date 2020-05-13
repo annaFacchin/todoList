@@ -8,16 +8,13 @@ import { EventEmitter } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
   @Input()
-  todo: number;
+  todoId: number;
   @Input()
-  todoId: string;
+  todo: string;
 
-  nextTodo: number;
-
-  toggle:boolean = true;
-
-  @Input() todoList = [];
   @Output() onRemoveEvent = new EventEmitter();
+
+  toggle: boolean = true;
 
   constructor() { }
 
@@ -25,10 +22,9 @@ export class TodoComponent implements OnInit {
 
   remove() {
     this.onRemoveEvent.emit(this.todoId);
-    console.log("todoList: " + this.todoList);
   }
 
-  toggleText(){
+  toggleText() {
     this.toggle = !this.toggle;
   }
 

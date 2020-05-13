@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,11 +7,15 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
   todoList = [];
-  nextTodo: number;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addTodo(newTodo: string) {
+    this.todoList.push(newTodo);
+    console.log("todoList: " + this.todoList);
   }
 
   onRemove(todoId: string) {

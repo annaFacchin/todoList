@@ -1,8 +1,16 @@
 <div>
-  <br>
-  <br>
-  <app-text-field></app-text-field>
+  <app-text-field (addTodoEvent)="addTodo($event)"></app-text-field>
 </div>
+
 <br>
 
+<div *ngFor="let t of todoList">
+  <br>
+  <app-todo 
+  [todoId]="t.todoId" 
+  [todo]="t.todo" 
+  (onRemoveEvent)="onRemove($event)">
+  </app-todo>
+</div>
 
+<br>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-field',
@@ -7,40 +7,24 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class TextFieldComponent implements OnInit {
 
-  @Input()
-  todo: number;
-  @Input()
-  todoId: string;
-
-  todoList = [];
+  inputValue: string;
   nextTodo: number;
 
-  @Output()
-  selectedItems = [];
+  @Output() addTodoEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
     this.nextTodo = 1;
-    for (let i = 1; i < this.nextTodo; i++) {
-      this.todoList.push({ initialValue: i + ": ", todoId: i });
-    }
   }
 
-  addTodo(newTodo: string) {
-    this.todoList.push({
-      initialValue: newTodo,
+  addTodo() {
+    this.addTodoEvent.emit({
       todoId: this.nextTodo,
+      todo: this.inputValue,
     });
     this.nextTodo++;
-    console.log("todoList: " + this.todoList);
+    this.inputValue = "";
   }
 
-  onRemove(todoId: string) {
-    for (let i = 0; i < this.todoList.length; i++) {
-      if (this.todoList[i].todoId === todoId) {
-        this.todoList.splice(i, 1);
-      }
-    }
-  }
 }
